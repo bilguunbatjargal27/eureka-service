@@ -4,13 +4,14 @@ spring:
 server:
   port: 8000
 
-
-eureka:
   client:
     registerWithEureka: false
     fetchRegistry: false
+
     server:
       waitTimeInMsWhenSyncEmpty: 0
+      maxThreadsForPeerReplication: 0
+
     service-url:
       default-Zone: http://localhost:8000/eureka
 
@@ -18,15 +19,12 @@ zuul:
   #Service will be mapped under the /api URI
   prefix: /api
   routes:
-
     course-service:
       path: /course-service/**
       url: http://localhost:8001
-
     tm-service:
       path: /tm-service/**
       url: http://localhost:8002
-
     job-service:
       path: /job-service/**
       url: http://localhost:8003
